@@ -1,0 +1,16 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://velantrim.dev/schema/knowledge-tree/edge.schema.json",
+  "title":"Velantrim Knowledge Tree Edge",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["id","from","to","relation","description","confidence","status"],
+  "properties":{
+    "id":{"type":"string","pattern":"^[a-z0-9][a-z0-9._-]*$"},
+    "from":{"type":"string","minLength":1},"to":{"type":"string","minLength":1},
+    "relation":{"enum":["OWNS","BELONGS_TO","DOCUMENTS","IMPLEMENTS","TESTS","VALIDATES","EXPLAINS","SUMMARIZES","HAS_CURRENT_STATE","HAS_HISTORY","HAS_REASONING_LOG","HAS_EXECUTABLE_EVIDENCE","HAS_RESEARCH","HAS_ARTIFACT","HAS_DISCUSSION_HISTORY","HAS_PROPOSAL","RELATED_TO","DERIVED_FROM","LED_TO","SUPERSEDES","SUPERSEDED_BY","CONTRADICTS","CLARIFIES","REVIEWS","ROUTES_TO","REFERENCES","HAS_PRODUCT_REPO","HAS_LAB_REPO","HAS_NOTION_PAGE","HAS_DRIVE_DOC","HAS_GITHUB_DOC","HAS_ISSUE","HAS_PR","HAS_COMMIT","HAS_TESTS"]},
+    "description":{"type":"string","minLength":12},
+    "confidence":{"enum":["HIGH","MEDIUM","LOW","UNKNOWN"]},
+    "status":{"enum":["CURRENT","HISTORICAL","PROPOSED","UNKNOWN"]}
+  }
+}

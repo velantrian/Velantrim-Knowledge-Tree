@@ -1,0 +1,8 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://velantrim.dev/schema/knowledge-tree/registry.schema.json",
+  "title":"Velantrim Knowledge Tree Registry",
+  "type":"object","additionalProperties":false,
+  "properties":{"nodes":{"type":"array","items":{"$ref":"node.schema.json"}},"edges":{"type":"array","items":{"$ref":"edge.schema.json"}}},
+  "anyOf":[{"required":["nodes"]},{"required":["edges"]}]
+}

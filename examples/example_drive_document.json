@@ -1,0 +1,5 @@
+{
+  "start": "graphiti-retrieval-drive-track",
+  "interpretation": "Long-form discussion/reasoning history, not exact live runtime authority.",
+  "next_when_exact_metrics_are_needed": "graphiti-fm16-artifacts"
+}
