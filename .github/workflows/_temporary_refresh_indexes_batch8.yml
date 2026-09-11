@@ -32,12 +32,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if git diff --quiet -- indexes; then
+          git add indexes
+          if git diff --cached --quiet -- indexes; then
             echo "Indexes already current"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add indexes
           git commit -m "chore: refresh deterministic Knowledge Tree indexes for batch 8"
           git push origin HEAD:knowledge-tree/gaps-audit-batch-8
