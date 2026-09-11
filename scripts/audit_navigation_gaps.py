@@ -10,7 +10,6 @@ ROOT_IDS = {"velantrim", "atlas", "knowledge-tree-github", "graphiti-retrieval-r
 PROJECTISH = {"ECOSYSTEM", "DOMAIN", "PROJECT"}
 RESEARCH_TYPES = {"RESEARCH_THREAD", "EXPERIMENT"}
 HISTORICAL_STATES = {"ARCHIVED", "SUPERSEDED", "DEPRECATED"}
-RETURN_RELATIONS = {"ROUTES_TO", "BELONGS_TO", "RELATED_TO", "SUPERSEDED_BY", "LED_TO"}
 
 
 def bfs(start: str, adjacency: dict[str, list[str]]) -> set[str]:
@@ -89,12 +88,6 @@ def main() -> int:
         ):
             project_missing_repo.append(n)
 
-    return_edge_sources = []
-    for n in incoming_only:
-        # A leaf with only incoming edges cannot execute AGENTS.md's one-known-node -> expand-one-hop path
-        # using the current directed adjacency index.
-        return_edge_sources.append(n)
-
     summary = {
         "nodes": len(nodes),
         "edges": len(edges),
@@ -132,20 +125,24 @@ def main() -> int:
             print(f"  ... +{len(items)-limit} more")
 
     show("ORPHANS", orphans)
+    show("NOT_REACHABLE_FROM_VELANTRIM_OUTGOING", not_reachable_from_velantrim)
+    show("EXAMPLES_CANNOT_REACH_ANY_ROOT_OUTGOING", cannot_reach_root, limit=20)
     show("PRIMARY_SINKS", primary_sinks)
     show("BROKEN_NEXT_REOPEN_REFS", broken_reopen_refs)
     show("OPEN_RESEARCH_WITHOUT_NEXT_REOPEN_PATH", open_research_without_reopen)
     show("HISTORICAL_WITHOUT_SUCCESSOR_ROUTE", historical_without_successor)
     show("PROJECTISH_WITHOUT_DIRECT_CURRENT_STATE", project_missing_direct_status)
     show("PROJECTS_WITHOUT_DIRECT_REPO_ROUTE", project_missing_repo)
-    show("EXAMPLES_INCOMING_ONLY_SINKS", return_edge_sources, limit=40)
+    show("EXAMPLES_INCOMING_ONLY_SINKS", incoming_only, limit=40)
 
     print()
     print("INTERPRETATION")
+    print("  orphans and broken next_reopen_path refs are hard structural gaps.")
     print("  incoming_only_sinks are not automatically bad data nodes; many are legitimate leaf sources.")
     print("  They are a navigation gap only for the documented AGENTS.md behavior: INPUT one known node -> expand one hop.")
-    print("  Current indexes/adjacency.json stores outgoing edges only, so a leaf source cannot discover its owning context without reverse lookup.")
-    print("  Recommended bounded repair: preserve directed adjacency and add deterministic reverse_adjacency/neighbors indexes; do not invent reciprocal authority edges.")
+    print("  Outgoing-only cannot-reach-root counts are expected in a directed owner->source graph and are not defects by themselves.")
+    print("  Direct HAS_CURRENT_STATE absence is a review warning, not an automatic error: some ecosystem/culture/product nodes may intentionally route through repo, Notion or another owner surface.")
+    print("  Recommended bounded repair: preserve semantic edge direction, add deterministic reverse_adjacency/neighbors indexes, and add only evidence-backed successor/reopen routes; do not invent reciprocal authority edges.")
 
     return 0
 
