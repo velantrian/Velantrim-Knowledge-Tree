@@ -1,0 +1,28 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://velantrim.dev/schema/knowledge-tree/node.schema.json",
+  "title":"Velantrim Knowledge Tree Node",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["id","type","title","summary","source_system","status","maturity","owner_domain","authoritative_for","not_authoritative_for","why_read","related_tags","last_verified","reopen_priority"],
+  "properties":{
+    "id":{"type":"string","pattern":"^[a-z0-9][a-z0-9._-]*$"},
+    "type":{"enum":["ECOSYSTEM","DOMAIN","PROJECT","REPOSITORY","DOCUMENT","NOTION_PAGE","RESEARCH_THREAD","EXPERIMENT","ISSUE","PULL_REQUEST","ARTIFACT","CONCEPT","ARCHITECTURE_DOC","STATUS_DOC","REASONING_LOG","DISCUSSION_ARCHIVE","PROPOSAL","CULTURE_DOC","HISTORICAL_DOC","INDEX","OTHER"]},
+    "title":{"type":"string","minLength":1},
+    "summary":{"type":"string","minLength":1},
+    "source_system":{"enum":["GITHUB","GOOGLE_DRIVE","NOTION","WEB","LOCAL","OTHER"]},
+    "url":{"type":["string","null"]},
+    "status":{"enum":["CURRENT","OPEN","CLOSED","DRAFT","REVIEWED","ARCHIVED","SUPERSEDED","DEPRECATED","UNKNOWN"]},
+    "maturity":{"enum":["CURRENT","RESEARCH","PROPOSED","EXPERIMENTAL","HISTORICAL","ARCHIVED","SUPERSEDED","LAB","PRODUCT","REFERENCE","UNKNOWN"]},
+    "owner_domain":{"type":"string","minLength":1},
+    "authoritative_for":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "not_authoritative_for":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "why_read":{"type":"string","minLength":1},
+    "related_tags":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "last_verified":{"type":["string","null"],"format":"date"},
+    "reopen_priority":{"enum":["PRIMARY","SECONDARY","REFERENCE"]},
+    "content_status":{"enum":["CURATED","PARTIAL","PLACEHOLDER","UNKNOWN"]},
+    "repository":{"type":"string"},"branch":{"type":"string"},"path":{"type":"string"},"commit":{"type":"string"},"document_id":{"type":"string"},"notion_page_id":{"type":"string"},"historical":{"type":"boolean"},"superseded_by":{"type":"string"},"supersedes":{"type":"string"},"evidence_level":{"type":"string"},"notes":{"type":"string"},
+    "research":{"type":"object","additionalProperties":false,"properties":{"research_question":{"type":"string"},"origin_problem":{"type":"string"},"prior_evidence":{"type":"array","items":{"type":"string"}},"competing_hypotheses":{"type":"array","items":{"type":"string"}},"experiments":{"type":"array","items":{"type":"string"}},"results":{"type":"array","items":{"type":"string"}},"limitations":{"type":"array","items":{"type":"string"}},"rejected_interpretations":{"type":"array","items":{"type":"string"}},"open_questions":{"type":"array","items":{"type":"string"}},"next_reopen_path":{"type":"array","items":{"type":"string"}},"architecture_promoted":{"type":"boolean"},"runtime_changed":{"type":"boolean"},"production_authorized":{"type":"boolean"}}}
+  }
+}
