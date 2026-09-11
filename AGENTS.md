@@ -14,6 +14,7 @@ This repository is a **navigation graph**, not a truth authority.
 8. Use exact GitHub code/tests/artifacts/commits for executable evidence.
 9. Never promote a research node into implementation, runtime, Canon, or product authority.
 10. Preserve `UNKNOWN`; do not infer absence from an inaccessible or unindexed source.
+11. When the known input node is a leaf/source node, inspect `indexes/neighbors.json` or `indexes/reverse_adjacency.json` to recover the owning/project/research context. Reverse navigation is a lookup projection only; it does not reverse the semantic meaning or authority direction of the stored edge.
 
 ## Minimal routing algorithm
 
@@ -25,6 +26,8 @@ resolve exact node
 read role + authority boundaries
   ↓
 expand one hop
+  ├─ outgoing: indexes/adjacency.json
+  └─ incoming/bidirectional lookup: indexes/reverse_adjacency.json or indexes/neighbors.json
   ↓
 rank relations by current question
   ↓
@@ -33,6 +36,14 @@ open required underlying source
 verify evidence
   ↓
 answer
+```
+
+`neighbors.json` is deliberately a navigation convenience projection. It preserves `direction: IN|OUT` and the original relation/edge ID.
+
+```text
+REVERSE LOOKUP ≠ REVERSED CLAIM
+NEIGHBORHOOD ≠ AUTHORITY TRANSFER
+INCOMING EDGE ≠ RECIPROCAL SEMANTIC EDGE
 ```
 
 ## Non-conflation firewall
