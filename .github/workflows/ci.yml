@@ -15,4 +15,5 @@ jobs:
       - run: python scripts/validate_tree.py
       - run: python scripts/build_indexes.py --check
       - run: python scripts/check_links.py
+      - run: python scripts/audit_navigation_gaps.py
       - run: pytest -q
