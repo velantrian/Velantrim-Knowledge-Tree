@@ -14,4 +14,4 @@ def load_edges():
     edges=[]
     for path in sorted(EDGE_DIR.glob("*.json")): edges.extend(load_json(path).get("edges", []))
     return edges
-def canonical_json(data): return json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True)+"\n"
+def canonical_json(data): return json.dumps(data, ensure_ascii=False, sort_keys=True, separators=(",", ":"))+"\n"

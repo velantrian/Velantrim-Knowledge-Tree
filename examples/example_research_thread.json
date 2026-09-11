@@ -1,0 +1,11 @@
+{
+  "id": "graphiti-retrieval-relevance",
+  "question": "What source should an AI open to understand FM-16, its exact evidence, and why the research reached it?",
+  "expected_routes": [
+    "graphiti-retrieval-drive-track",
+    "graphiti-retrieval-notion-track",
+    "graphiti-retrieval-reasoning-log",
+    "graphiti-fm16-closure",
+    "graphiti-fm16-artifacts"
+  ]
+}
