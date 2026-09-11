@@ -1,0 +1,10 @@
+{
+  "edges": [
+    {"id":"velantrim-routes-atlas","from":"velantrim","to":"atlas","relation":"ROUTES_TO","description":"Atlas is the high-level orientation surface for deciding which owning Velantrim domain or source to open next.","confidence":"HIGH","status":"CURRENT"},
+    {"id":"atlas-routes-tree-notion","from":"atlas","to":"knowledge-tree-notion","relation":"ROUTES_TO","description":"The Master Atlas exposes the Notion Knowledge Tree as a deeper source/evidence/research navigation layer.","confidence":"HIGH","status":"CURRENT"},
+    {"id":"tree-notion-documents-tree-drive","from":"knowledge-tree-notion","to":"knowledge-tree-drive","relation":"REFERENCES","description":"The Notion tree points to the Google Drive companion when detailed human-readable commentary and preservation guidance are needed.","confidence":"HIGH","status":"CURRENT"},
+    {"id":"tree-github-documents-tree-drive","from":"knowledge-tree-github","to":"knowledge-tree-drive","relation":"DOCUMENTS","description":"This repository machine-encodes the same navigation purpose while the Drive document preserves a more human-readable long-form map.","confidence":"HIGH","status":"CURRENT"},
+    {"id":"tree-github-related-atlas-github","from":"knowledge-tree-github","to":"atlas-github","relation":"RELATED_TO","description":"Knowledge Tree provides local source expansion from one node; Atlas provides higher-level orientation. They complement rather than replace one another.","confidence":"HIGH","status":"CURRENT"},
+    {"id":"tree-github-related-crosswalk","from":"knowledge-tree-github","to":"crosswalk-drive","relation":"RELATED_TO","description":"Knowledge Tree records source/evidence/research adjacency, while Crosswalk records cross-project architectural relations and ownership boundaries.","confidence":"HIGH","status":"CURRENT"}
+  ]
+}
