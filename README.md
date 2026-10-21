@@ -1,5 +1,14 @@
 # 🌳🧭 Velantrim Knowledge Tree
 
+> 🌳 **Find the right source across complex research projects without mistaking a map for evidence.**
+>
+> **Why:** Useful knowledge is scattered across issues, code, documents and notes. Knowledge Tree links them through a machine-readable navigation graph.
+>
+> **Example:** Start from one project concept, follow typed links to its original source and open that source to verify the claim.
+>
+> **Scope:** Partial bootstrap navigation infrastructure; not Canon, memory runtime or production authority.
+
+
 **STATUS:** `RESEARCH_NAVIGATION_INFRASTRUCTURE`  
 **DATA COMPLETENESS:** `PARTIAL / BOOTSTRAP`  
 **RUNTIME:** `NOT_AUTHORIZED`  
